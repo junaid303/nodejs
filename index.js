@@ -1,13 +1,13 @@
 const http = require("http");
 const fs = require("fs/promises");
 
-//const port = 1234;
+const port = 1234;
 
 const server = http.createServer(async(req, res)=>{
    try {
     if(req.method==='GET' && req.url === "/data"){
         res.writeHead(200,{'Content-Type':"application/json"});
-        const data = await fs.readFile("./data.json");
+       // const data = await fs.readFile("./data.json");
         res.end(data);
     }else if (req.method === "GET" && req.url=== "/"){
         res.writeHead(200,{'Content-Type':"text/html"});
