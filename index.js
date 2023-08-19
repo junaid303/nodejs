@@ -22,5 +22,5 @@ const server = http.createServer(async(req, res)=>{
 });
 
 server.listen(port, ()=>{
-    //console.log(`Server started at ${port}`);
+    console.log(`Server started at ${port}`);
 });
