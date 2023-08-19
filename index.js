@@ -11,12 +11,12 @@ const server = http.createServer(async(req, res)=>{
         res.end(data);
     }else if (req.method === "GET" && req.url=== "/"){
         res.writeHead(200,{'Content-Type':"text/html"});
-       // const data2 = await fs.readFile("index.html")
+        const data2 = await fs.readFile("index.html")
             res.end(data2);
         
     }
    } catch (error) {
-    console.error(error);
+    //console.error(error);
    } 
     
 });
