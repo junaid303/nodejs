@@ -4,3 +4,15 @@ Hello, The Server Got hit by ::1
 Hello, The Server Got hit by ::1
 Hello, The Server Got hit by ::1
 Hello, The Server Got hit by ::1
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0
+Date-Time: 2024-04-13T14:57:08.383Z
+HTTP Method: GET
+URL: /
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0
+Date-Time: 2024-04-13T14:57:08.515Z
+HTTP Method: GET
+URL: /favicon.ico
