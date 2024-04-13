@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
     const url = req.url;
 
     // Log request details
-    const logMessage = `HTTP Req Log\nRemote Address: ${remoteAddress}\nUser-Agent: ${userAgent}\nDate-Time: ${dateTime}\nHTTP Method: ${method}\nURL: ${url}\n`;
+    const logMessage = `HTTP Req Log\nRemote Address: ${remoteAddress}\nUser-Agent: ${userAgent}\nreferer: ${referer}\nDate-Time: ${dateTime}\nHTTP Method: ${method}\nURL: ${url}\n`;
     console.log(logMessage);
     fs.appendFile("logs.txt", logMessage, (err) => {
         if (err) {

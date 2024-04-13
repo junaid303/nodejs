@@ -16,3 +16,29 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 Date-Time: 2024-04-13T14:57:08.515Z
 HTTP Method: GET
 URL: /favicon.ico
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0
+Date-Time: 2024-04-13T15:00:02.637Z
+HTTP Method: GET
+URL: /
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0
+Date-Time: 2024-04-13T15:00:02.756Z
+HTTP Method: GET
+URL: /favicon.ico
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+referer: Not specified
+Date-Time: 2024-04-13T15:28:10.575Z
+HTTP Method: GET
+URL: /
+HTTP Req Log
+Remote Address: ::1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+referer: http://localhost:8080/
+Date-Time: 2024-04-13T15:28:10.731Z
+HTTP Method: GET
+URL: /favicon.ico
