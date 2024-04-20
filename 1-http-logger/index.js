@@ -23,7 +23,7 @@ function logRequestDetails(req, res) {
     const statusCode = res.statusCode;
     const referer = req.headers.referer || '-'; // "-" if referer header is not present
 
-    const logMessage = `Remote Address: ${remoteAddress} - User-Agent: ${userAgent} - Date-Time: ${dateTime} - Method: ${method} - URL: ${url} - Status Code: ${statusCode} -  Referer: ${referer}\n`;
+    const logMessage = `Remote Address: ${remoteAddress} - User-Agent: ${userAgent} \n`;
 
     console.log(logMessage); // Log to console
 
