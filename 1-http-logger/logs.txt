@@ -10,3 +10,9 @@ Remote Address: ::1
 Remote Address: ::1 
 Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 
 Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-04-20T21:01:54.776Z - Method: GET -URL: / -Status Code: 200 -Referer: -
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-04-20T21:01:54.850Z - Method: GET -URL: /favicon.ico -Status Code: 200 -Referer: http://localhost:8080/
+Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:02:36.091Z - Method: GET -URL: / -Status Code: 200 -Referer: -
+Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:02:53.919Z - Method: POST -URL: / -Status Code: 200 -Referer: -
+Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:02:58.347Z - Method: PUT -URL: / -Status Code: 200 -Referer: -
+Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:03:06.075Z - Method: DELETE -URL: / -Status Code: 200 -Referer: -
