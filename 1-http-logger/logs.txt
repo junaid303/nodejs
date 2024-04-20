@@ -20,3 +20,6 @@ Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T
 Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:27:21.462Z - Method: GET -URL: /data -Status Code: 200 -Referer: -
 Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:28:38.187Z - Method: GET -URL: /data -Status Code: 200 -Referer: - - Content-length: -
 Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:29:06.090Z - Method: GET -URL: /data -Status Code: 200 -Referer: - - Content-length: undefined
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-04-20T21:39:01.094Z - Method: GET -URL: / -Status Code: 200 -Referer: - - Content-length: -
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-04-20T21:39:01.172Z - Method: GET -URL: /favicon.ico -Status Code: 200 -Referer: http://localhost:8080/ - Content-length: -
+Remote Address: ::1 - User-Agent: PostmanRuntime/7.37.3 - Date-time: 2024-04-20T21:39:16.319Z - Method: GET -URL: /data -Status Code: 200 -Referer: - - Content-length: -
