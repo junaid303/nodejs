@@ -24,35 +24,7 @@ function logRequestDetails(req, res) {
         .catch((err) => console.error("Error appending log message to logs.txt:", err));
 }
 
-const server = http.createServer(async (req,res)=>{
-    try {
-        //HTTP Middleware 
-        logRequestDetails(req,res)
-         //It Extracts pathname, searchparams from req.url object
-         const parsedURL = url.parse(req.url, true);
-          /*
-            API Endpoint : /api/tasks
-            HTTP Method : GET
-            Data Validations  : None 
-            Desc : Read all the tasks from data.json and send the data as response
-        */
-        if (req.method === "GET" && parsedURL.pathname === "/api/tasks") {
-            let data = await fs.readFile("data.json");
-            res.setHeader('Access-Control-Allow-Origin', "*");
-            res.writeHead(200, { 'Content-Type': "application/json" });
-            setTimeout(() => {
-                res.end(data); //remove in production
-            }, 2000);
-        }
-        
-    } catch (error) {
-        // console.log(error);
-        res.writeHead(500, { 'Content-Type': "application/json" });
-        res.end(JSON.stringify({ error: "Something Went Wrong. Try Again Later" }));
-    }
 
-    
-});
 
 
 server.listen(port, ()=>{
