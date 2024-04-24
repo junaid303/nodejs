@@ -24,7 +24,18 @@ function logRequestDetails(req, res) {
         .catch((err) => console.error("Error appending log message to logs.txt:", err));
 }
 
+const server = http.createServer(async (req,res)=>{
+    try {
+        
+        
+    } catch (error) {
+        // console.log(error);
+        res.writeHead(500, { 'Content-Type': "application/json" });
+        res.end(JSON.stringify({ error: "Something Went Wrong. Try Again Later" }));
+    }
 
+    
+});
 
 
 server.listen(port, ()=>{
