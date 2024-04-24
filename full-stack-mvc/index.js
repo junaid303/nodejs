@@ -26,6 +26,16 @@ function logRequestDetails(req, res) {
 
 const server = http.createServer(async (req,res)=>{
     try {
+        //HTTP Middleware 
+        logRequestDetails(req,res)
+         //It Extracts pathname, searchparams from req.url object
+         const parsedURL = url.parse(req.url, true);
+          /*
+            API Endpoint : /api/tasks
+            HTTP Method : GET
+            Data Validations  : None 
+            Desc : Read all the tasks from data.json and send the data as response
+        */
         
         
     } catch (error) {
