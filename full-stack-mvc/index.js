@@ -36,14 +36,25 @@ const server = http.createServer(async (req,res)=>{
             Data Validations  : None 
             Desc : Read all the tasks from data.json and send the data as response
         */
-            if (req.method === "GET" && parsedURL.pathname === "/api/tasks") {
-                let data = await fs.readFile("data.json");
-                res.setHeader('Access-Control-Allow-Origin', "*");
-                res.writeHead(200, { 'Content-Type': "application/json" });
-                setTimeout(() => {
-                    res.end(data); //remove in production
-                }, 2000);
-            }
+           if(req.method==="GET" && parsedURL.pathname==="/api/tasks"){
+            let data = await fs.readFile("data.json");
+            res.setHeader("Access-Control-Allow-Origin","*");
+            res.writeHead(200,{'Content-Type':'application/json'});
+            setTimeout(()=>{
+                res.end(data);
+            },2000);
+           }
+
+             /*
+           API Endpoint : /api/task
+           HTTP Method : GET
+           Params : _id
+           Data Validations  : None 
+           Desc : Read all the tasks from data.json and send the _id task as response
+       */
+        else if (req.method === "GET" && parsedURL.pathname === "/api/task") {
+            
+        }
         
     } catch (error) {
         // console.log(error);
