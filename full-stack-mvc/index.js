@@ -54,7 +54,11 @@ const server = http.createServer(async (req,res)=>{
        */
         else if (req.method === "GET" && parsedURL.pathname === "/api/task") {
             let _id = parsedURL.query._id;
+            let data = JSON.parse(await fs.readFile("data.json"));
+            let index = data.findIndex(ele => ele._id === _id);
+
             
+        }
         
     } catch (error) {
         // console.log(error);
