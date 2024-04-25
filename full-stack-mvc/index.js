@@ -53,8 +53,8 @@ const server = http.createServer(async (req,res)=>{
            Desc : Read all the tasks from data.json and send the _id task as response
        */
         else if (req.method === "GET" && parsedURL.pathname === "/api/task") {
+            let _id = parsedURL.query._id;
             
-        }
         
     } catch (error) {
         // console.log(error);
