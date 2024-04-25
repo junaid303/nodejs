@@ -57,7 +57,12 @@ const server = http.createServer(async (req,res)=>{
             let data = JSON.parse(await fs.readFile("data.json"));
             let index = data.findIndex(ele => ele._id === _id);
 
-            
+            if (index === -1) {
+                res.writeHead(400, { 'Content-Type': "application/json" });
+                return res.end(JSON.stringify({ message: "Invalid ID." }));
+            }
+
+            l
         }
         
     } catch (error) {
