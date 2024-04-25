@@ -62,7 +62,9 @@ const server = http.createServer(async (req,res)=>{
                 return res.end(JSON.stringify({ message: "Invalid ID." }));
             }
 
-            l
+            let task = data.find(ele => ele._id === _id);
+            res.writeHead(200, { 'Content-Type': "application/json" });
+            res.end(JSON.stringify(task));
         }
         
     } catch (error) {
