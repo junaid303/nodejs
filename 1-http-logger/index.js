@@ -34,6 +34,8 @@ function logRequestDetails(req, res) {
         .catch((err) => console.error("Error appending log message to logs.txt:", err));
 }
 */
+
+//Destructured Code 
 function logRequestDetails(req, res) {
     const {
         connection: { remoteAddress },
