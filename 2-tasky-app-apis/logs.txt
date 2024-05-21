@@ -1,0 +1,2 @@
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-05-14T11:34:35.625Z - Method: GET -URL: / -Status Code: 200 -Referer: - - Content-length: -
+Remote Address: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 - Date-time: 2024-05-14T11:34:35.694Z - Method: GET -URL: /favicon.ico -Status Code: 200 -Referer: http://localhost:8080/ - Content-length: -
