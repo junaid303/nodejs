@@ -1,0 +1,17 @@
+Rest (Respresentational state transefer) API
+-> its a API Standard protocol or rule
+lets say we met someone new, we could have communicate with him via email or whatsapp, but we choose email to have 
+standard conversation, we cannot go directly Yo , hi , we have rule to , same like for web applicationos
+we got REST its a API Standard Protocol
+
+--> HTTP Methods (GET, POST, PUT, DELETE)
+
+CRUD - (CREATE, READ, UPDATE, and DELETE)
+we had simple fs , CRUD is just that, create is writeFile, read is readFile, update is appendFile, Delete is unlinkFile
+So CRUD is bunch operations done on files
+So if you perform CRUD operations over a network lets say readFile using GET , writeFile using POST , is called CRUD 
+so in simple words CRUD over network is REST 
+
+basically REST has clent and server , but CRUD is just you 
+i have given you some data.json file , and you guys sitting somewhere else and are able to access it, i can stop it 
+anytime by closing the server, i can add restrictions to it some password, all using JAVASCRIPT that is REST 
