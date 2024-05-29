@@ -3,6 +3,7 @@ Rest (Respresentational state transefer) API
 lets say we met someone new, we could have communicate with him via email or whatsapp, but we choose email to have 
 standard conversation, we cannot go directly Yo , hi , we have rule to , same like for web applicationos
 we got REST its a API Standard Protocol
+--> it is stateless (indepedent, doesn)
 
 --> HTTP Methods (GET, POST, PUT, DELETE)
 
@@ -15,3 +16,8 @@ so in simple words CRUD over network is REST
 basically REST has clent and server , but CRUD is just you 
 i have given you some data.json file , and you guys sitting somewhere else and are able to access it, i can stop it 
 anytime by closing the server, i can add restrictions to it some password, all using JAVASCRIPT that is REST 
+
+NOTE : The process of testing your own API is called pen testing 
+
+NOTE : don't say i perform crud app , if we're using own browser for storage , then that is crud app, 
+crud app means there is no network
