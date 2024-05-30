@@ -1,11 +1,17 @@
 import http from "http";
+import fs from "fs/promises"
 
 const port = 8080;
-const server = http.createServer((req,res)=>{
-    console.log(req.method);
+const server = http.createServer(async (req,res)=>{
+    try {
+        console.log(req.method);
     //Route Handling
     if(req.method === "GET"){
         //read data.json and send json data as response
+        const data = await fs.readFile("data.json");
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(data);  // send the data read from data.json
         //status code, application content type json
         res.end("You are hitting GET method !");
     }else if (req.method === "POST"){
@@ -24,6 +30,9 @@ const server = http.createServer((req,res)=>{
         res.end("Hello ")
     }
     res.end("Server Stated ");
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 server.listen(port, ()=>{
