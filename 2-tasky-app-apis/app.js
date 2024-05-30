@@ -9,8 +9,9 @@ const server = http.createServer(async (req,res)=>{
     if(req.method === "GET"){
         //read data.json and send json data as response
         const data = await fs.readFile("data.json");
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
+        // res.statusCode = 200;
+        // res.setHeader('Content-Type', 'application/json');
+        res.writeHead(200, {'Content-Type':"application/json"}); //with res.writeHead, you can apply both res.statusCode and res.setHeader in one line
         res.end(data);  // send the data read from data.json
         //status code, application content type json
         res.end("You are hitting GET method !");
