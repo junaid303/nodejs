@@ -8,13 +8,12 @@ const server = http.createServer(async (req,res)=>{
     //Route Handling
     if(req.method === "GET"){
         //read data.json and send json data as response
-        const data = await fs.readFile("data.json");
+        let data = await fs.readFile("data.json");
         // res.statusCode = 200;
         // res.setHeader('Content-Type', 'application/json');
         res.writeHead(200, {'Content-Type':"application/json"}); //with res.writeHead, you can apply both res.statusCode and res.setHeader in one line
         res.end(data);  // send the data read from data.json
         //status code, application content type json
-        res.end("You are hitting GET method !");
     }else if (req.method === "POST"){
         //refer req.on (data & end) event in M6 session
         //accept req.body from client and insert into data.json
@@ -30,9 +29,12 @@ const server = http.createServer(async (req,res)=>{
         //send 405 response code
         res.end("Hello ")
     }
-    res.end("Server Stated ");
+
+    
     } catch (error) {
-        console.log(error);
+        res.writeHead(500, {'Content-Type': "application/json"});
+        res.end(JSON.stringify({error: 'Something went wrong with the server, Internal Error'}));//stringfy is required coz we put json in content type
+        // console.log(error);//console.log error is required when you want to debug something 
     }
 });
 
