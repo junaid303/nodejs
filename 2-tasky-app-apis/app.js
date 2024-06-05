@@ -1,10 +1,12 @@
 import http from "http";
-import fs from "fs/promises"
+import fs from "fs/promises";
+import url from "url";
 
 const port = 8080;
 const server = http.createServer(async (req,res)=>{
     try {
-        console.log(req.method);
+        console.log(req.url);
+        
     //Route Handling
     if(req.method === "GET"){
         //read data.json and send json data as response
