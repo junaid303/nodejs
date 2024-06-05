@@ -6,6 +6,7 @@ const port = 8080;
 const server = http.createServer(async (req,res)=>{
     try {
         console.log(req.url);
+        console.log(url.parse(req.url));
         
     //Route Handling
     if(req.method === "GET"){
