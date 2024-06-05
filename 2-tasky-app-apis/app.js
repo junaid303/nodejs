@@ -7,7 +7,7 @@ const server = http.createServer(async (req,res)=>{
     try {
         console.log(req.url);
         console.log(url.parse(req.url));
-        
+        console.log(url.parse(req.url).pathname);
     //Route Handling
     if(req.method === "GET"){
         //read data.json and send json data as response
