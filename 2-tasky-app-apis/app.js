@@ -37,7 +37,8 @@ const server = http.createServer(async (req,res)=>{
 
     
     } catch (error) {
-        ;//stringfy is required coz we put json in content type
+        res.writeHead(500, {'Content-Type': "application/json"});
+        //stringfy is required coz we put json in content type
         // console.log(error);//console.log error is required when you want to debug something 
     }
 });
