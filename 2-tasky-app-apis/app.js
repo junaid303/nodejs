@@ -27,6 +27,10 @@ const server = http.createServer(async (req,res)=>{
         res.end("You are hitting PUT method !");
     }else if(req.method === "DELETE"){
         res.end("You are hitting DELETE method !");
+    }else if(req.method === "GET" && parsedURL.pathname === "/"){
+        res.writeHead(200, {'Content-Type':"application/json"});
+        const message = {message: "Hello World. Welcome to My App"}; 
+        res.end(JSON.stringify(message));
     }else {
         //Unrecognised/Unsupported HTTP Method response 
         //send 405 response code
