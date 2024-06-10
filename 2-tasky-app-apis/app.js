@@ -17,7 +17,7 @@ const server = http.createServer(async (req,res)=>{
         res.writeHead(200, {'Content-Type':"application/json"}); //with res.writeHead, you can apply both res.statusCode and res.setHeader in one line
         res.end(data);  // send the data read from data.json
         //status code, application content type json
-    }else if (req.method === "POST"){
+    }else if (req.method === "POST" && parsedURL.pathname === "/api/tasks/add"){
         //refer req.on (data & end) event in M6 session
         //accept req.body from client and insert into data.json
         //_id : create a function that generates 10 character alpha numberic
