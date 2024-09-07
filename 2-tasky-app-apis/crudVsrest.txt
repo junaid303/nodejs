@@ -13,7 +13,7 @@ So CRUD is bunch operations done on files
 So if you perform CRUD operations over a network lets say readFile using GET , writeFile using POST , is called CRUD 
 so in simple words CRUD over network is REST 
 
-basically REST has clent and server , but CRUD is just you 
+basically REST has client and server , but CRUD is just you 
 i have given you some data.json file , and you guys sitting somewhere else and are able to access it, i can stop it 
 anytime by closing the server, i can add restrictions to it some password, all using JAVASCRIPT that is REST 
 
