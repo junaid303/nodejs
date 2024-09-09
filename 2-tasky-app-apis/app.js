@@ -1,7 +1,7 @@
 import http from "http";
 import fs from "fs/promises";
 import url from "url";
-import {generate_id} from "./utils/index.js";
+import { generate_id, validateTaskdata } from "./utils/index.js";
 
 const port = 8080;
 const server = http.createServer(async (req, res) => {
@@ -33,8 +33,15 @@ const server = http.createServer(async (req, res) => {
       });
 
       req.on("end", () => { // Ensure this is marked async
-        body = JSON.parse(body); 
-        //Create/Generate _id according to data validation rules 
+        body = JSON.parse(body);
+        body._id = generate_id(10); 
+        console.log(body);
+         
+        //Data Validation Middleware  
+        let validationResult = validateTaskdata(body);
+        console.log(validationResult);
+        
+
         
       });
       res.end("You are hitting POST method !")
