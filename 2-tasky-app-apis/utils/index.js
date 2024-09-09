@@ -1,3 +1,4 @@
+import { error } from "console";
 import fs from "fs";
 
 function generate_id(length) {
@@ -10,15 +11,58 @@ function generate_id(length) {
       result += characters.charAt(randomIndex); // Append character at the random index
     }
     //Search if the above random string does already exist 
-    let data = fs.readFileSync("../data.json");
+    let data = fs.readFileSync("data.json");
     data = JSON.parse(data);
     let idFound = data.find(ele => ele._id === result);
     if (idFound) return generate_id(length);
     else return result;
   }
+
+function validateTaskdata(body){
+   let {taskname, deadline, status} = body;
+   //Verify taskname : Negative check 
+   if(taskname.length < 5 || taskname.length> 200){//NOTE : In neg checks use || operator
+     error.message = "Taskname must be > 5 and Less than < 200 Chars"
+   }
+   console.log(error);
+   
+   //verify deadline
+   /*DEADLINE VERIFICATION : 1) date cannot be backdated, 
+   2) it cannot be next 15 min, 
+   3) it cannot be more than 30 days  */
+   console.log(deadline);
+   let liveTime = new Date();//Live Time
+   let inputTime = new Date(deadline);//Input Time
+   console.log(liveTime,inputTime);
+   
+   let diff_in_miliseconds = inputTime - liveTime;
+   let diff_in_minutes = diff_in_miliseconds/ (1000 * 60);
+   let diff_in_days = diff_in_miliseconds/(1000 * 60 * 60 * 24);
+   console.log(diff_in_miliseconds, diff_in_minutes, diff_in_days);
+   
+   if(diff_in_minutes < 15 || diff_in_days >  30){
+    error.message="deadline cannot be within 15 minutes OR must be under 30 days OR backdated"
+   }
+   //verify status
+   if(typeof status !== 'boolean'){
+    error.message = "Status must be a boolean"
+   }
+   console.log(error);
+   
+}
+validateTaskdata({
+      
+  "taskname": "afsd",
+  "deadline": "Mon Sept 9 2029 16:50:00 GMT-0400",
+  "status": true
+});
+
   export  {
-    generate_id
+    generate_id, validateTaskdata
   
   }
-   
+
+ 
+  
+  
   
