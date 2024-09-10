@@ -1,7 +1,8 @@
 import http from "http";
 import fs from "fs/promises";
 import url from "url";
-import { generate_id, validateTaskdata } from "./utils/index.js";
+import { generate_id, validateTaskdata , insertDb, updateDb} from "./utils/index.js";
+
 
 const port = 8080;
 const server = http.createServer(async (req, res) => {
@@ -35,19 +36,57 @@ const server = http.createServer(async (req, res) => {
       req.on("end", () => { // Ensure this is marked async
         body = JSON.parse(body);
         body._id = generate_id(10); 
-        console.log(body);
+        body.status = false; //we assume status to be false
+        // console.log(body);
          
         //Data Validation Middleware  
         let validationResult = validateTaskdata(body);
-        console.log(validationResult);
-        
+        //If the validateResult is an empty object, then add body to data.json
+        //If validationResult is not empty object , then send 400 error as response
+        if(validationResult.message){
+          res.writeHead(400,{'Content-type':"application/json"});
+          res.end(JSON.stringify(validationResult));
+          
+        }else {
+          //Read the file, prase the file data
+          //append the body obj into parsed object
+          //fs write the updated data
+          
+            insertDb(body);
+            res.writeHead(200, {'Content-type': "application/json"});
+            res.end(JSON.stringify({ message: "Task has been inserted into DB" }));
+          }
+        });
 
-        
+    } else if (req.method === "PUT" && parsedURL.pathname === "/api/tasks/edit") {
+      let body = '';
+      req.on("data", (chunk) => {
+        body += chunk;
       });
-      res.end("You are hitting POST method !")
 
-    } else if (req.method === "PUT") {
-      res.end("You are hitting PUT method !");
+      req.on("end", () => { // Ensure this is marked async
+        body = JSON.parse(body);
+        let _id = parsedURL.query._id;
+        console.log(body);
+        console.log(_id);
+        //Data Validation Middleware  
+        let validationResult = validateTaskdata(body);
+        //If the validateResult is an empty object, then add body to data.json
+        //If validationResult is not empty object , then send 400 error as response
+        if(validationResult.message){
+          res.writeHead(400,{'Content-type':"application/json"});
+          res.end(JSON.stringify(validationResult));
+          
+        }else {
+          //Read the file, prase the file data
+          //append the body obj into parsed object
+          //fs write the updated data
+          updateDb(body,_id)
+            res.writeHead(200, {'Content-type': "application/json"});
+            res.end(JSON.stringify({ message: "Task has been updated into DB" }));
+          }
+        })
+     
     } else if (req.method === "DELETE") {
       res.end("You are hitting DELETE method !");
     } else if (req.method === "GET" && parsedURL.pathname === "/") {

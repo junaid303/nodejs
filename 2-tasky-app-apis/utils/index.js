@@ -1,4 +1,3 @@
-import { error } from "console";
 import fs from "fs";
 
 function generate_id(length) {
@@ -45,7 +44,7 @@ function validateTaskdata(body) {
     error.message = "deadline cannot be within 15 minutes OR must be under 30 days OR backdated"
   }
   //verify status
-  if (typeof status !== 'boolean') {
+  if (status && typeof status !== 'boolean') {
     error.message = "Status must be a boolean"
   }
   return error;
@@ -64,11 +63,23 @@ function insertDb(body){
     data.push(body);
     fs.writeFileSync("data.json",JSON.stringify(data));
 }
+
+function updateDb(body, _id){
+   let error = {};
+  let data = fs.readFileSync("data.json")
+    data = JSON.parse(data);
+    let index = data.findIndex(ele => ele._id === _id);
+    if(index === -1){
+      error.message = "The _id is invalid, Bad request"
+    }else{
+      data[index]= body;
+      fs.writeFileSync  ("data.json", JSON.stringify(data));
+    }
+    return error;
+    
+    // fs.writeFileSync("data.json",JSON.stringify(data));
+}
 export {
-  generate_id, validateTaskdata, insertDb
+  generate_id, validateTaskdata, insertDb, updateDb
 
 }
-
-
-
-
