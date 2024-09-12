@@ -21,7 +21,24 @@ const server = http.createServer(async (req, res) => {
       let data = await fs.readFile("data.json");
       res.writeHead(200, { 'Content-Type': "application/json" });
       res.end(data); // Send the data read from data.json
-    }/*
+    }
+    else if(req.method === "GET" && parsedURL.pathname === "/api/task") {
+  let _id = parsedURL.query._id;
+  let data = JSON.parse(await fs.readFile("data.json"));
+  let index = data.findIndex(ele => ele._id === _id);
+  if (index === -1) {
+    res.writeHead(400, {'Content-type': "application/json"});
+    return res.end(JSON.stringify({message: "Invalid ID."}));
+  }
+  let task = data.find(ele => ele._id === _id);
+  res.writeHead(200, {'Content-type': "application/json"});
+  res.end(JSON.stringify(task));
+}
+
+
+
+    
+    /*
     API Endpoint : /api/tasks//add
     HTTP Method : POST 
     Data Validations  :   { taskname, deadline , status}
@@ -58,7 +75,15 @@ const server = http.createServer(async (req, res) => {
           }
         });
 
-    } else if (req.method === "PUT" && parsedURL.pathname === "/api/tasks/edit") {
+    }/*
+    API Endpoint : /api/tasks/edit
+    HTTP Method : PUT
+    Data Validations  :   { taskname, deadline , status}
+    Params : _id
+    Desc : Read req.body and update it into data.json file 
+    */
+    
+    else if (req.method === "PUT" && parsedURL.pathname === "/api/tasks/edit") {
       let body = '';
       req.on("data", (chunk) => {
         body += chunk;
@@ -67,8 +92,8 @@ const server = http.createServer(async (req, res) => {
       req.on("end", () => { // Ensure this is marked async
         body = JSON.parse(body);
         let _id = parsedURL.query._id;
-        console.log(body);
-        console.log(_id);
+        // console.log(body);
+        // console.log(_id);
         //Data Validation Middleware  
         let validationResult = validateTaskdata(body);
         //If the validateResult is an empty object, then add body to data.json
@@ -87,9 +112,29 @@ const server = http.createServer(async (req, res) => {
           }
         })
      
-    } else if (req.method === "DELETE") {
-      res.end("You are hitting DELETE method !");
-    } else if (req.method === "GET" && parsedURL.pathname === "/") {
+    }
+    /*
+    API Endpoint : /api/tasks/delete
+    HTTP Method : DELETE
+    Data Validations  :   { taskname, deadline , status}
+    Desc : Read req.body and delete the record in data.json file 
+    */
+    
+    else if (req.method === "DELETE" && parsedURL.pathname==="api/tasks/delete") {
+      let _id = parsedURL.query._id;
+      let data = JSON.parse(await fs.readFile("data.json"));
+      let index = data.findIndex(ele => ele._id === _id);
+      if(index === -1){
+        res.writeHead(400, {'Content-type':"application/json"});
+        return res.end(JSON.stringify({message : "Invalid ID"}));
+      }
+      data = data.filter(ele=> ele._id !==_id);
+      await fs.writeFile("data.json", JSON.stringify(data));
+      res.writeHead(200, {'Content-type':"application/json"});
+      res.end(JSON.stringify({message: "Task has been deleted from the DB "}));
+    } 
+    
+     else if (req.method === "GET" && parsedURL.pathname === "/") {
       res.writeHead(200, { 'Content-Type': "application/json" });
       const message = { message: "Hello World. Welcome to My App" };
       res.end(JSON.stringify(message));
@@ -99,8 +144,7 @@ const server = http.createServer(async (req, res) => {
       const message = { status: "Not Found: Invalid path" };
       res.end(JSON.stringify(message));
     }
-
-  } catch (error) {
+ } catch (error) {
     res.writeHead(500, { 'Content-Type': "application/json" });
     res.end(JSON.stringify({ error: 'Something went wrong with the server, Internal Error' }));
   }
