@@ -6,9 +6,12 @@ import { generate_id, validateTaskdata , insertDb, updateDb} from "./utils/index
 
 const port = 8080;
 const server = http.createServer(async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   try {
+    //It Extracts pathname , searchparams from req.url object 
     const parsedURL = url.parse(req.url, true);
-
     // Route Handling
     /*
     API Endpoint : /api/tasks
@@ -120,19 +123,20 @@ const server = http.createServer(async (req, res) => {
     Desc : Read req.body and delete the record in data.json file 
     */
     
-    else if (req.method === "DELETE" && parsedURL.pathname==="api/tasks/delete") {
+    else if (req.method === "DELETE" && parsedURL.pathname === "/api/tasks/delete") {
+
       let _id = parsedURL.query._id;
       let data = JSON.parse(await fs.readFile("data.json"));
       let index = data.findIndex(ele => ele._id === _id);
-      if(index === -1){
-        res.writeHead(400, {'Content-type':"application/json"});
-        return res.end(JSON.stringify({message : "Invalid ID"}));
+      if (index === -1) {
+          res.writeHead(400, { 'Content-Type': "application/json" });
+          return res.end(JSON.stringify({ message: "Invalid ID." }));
       }
-      data = data.filter(ele=> ele._id !==_id);
+      data = data.filter(ele => ele._id !== _id);
       await fs.writeFile("data.json", JSON.stringify(data));
-      res.writeHead(200, {'Content-type':"application/json"});
-      res.end(JSON.stringify({message: "Task has been deleted from the DB "}));
-    } 
+      res.writeHead(200, { 'Content-Type': "application/json" });
+      res.end(JSON.stringify({ message: "Task has been deleted from the DB." }));
+  }
     
      else if (req.method === "GET" && parsedURL.pathname === "/") {
       res.writeHead(200, { 'Content-Type': "application/json" });

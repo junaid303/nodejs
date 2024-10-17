@@ -72,6 +72,7 @@ function updateDb(body, _id){
     if(index === -1){
       error.message = "The _id is invalid, Bad request"
     }else{
+      body._id = _id;
       data[index]= body;
       fs.writeFileSync  ("data.json", JSON.stringify(data));
     }
