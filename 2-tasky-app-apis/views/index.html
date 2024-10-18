@@ -21,7 +21,7 @@
 <script>
     async function hitAPI() {
         try {
-            let res = await axios.get('http://localhost:8080/api/tasks');
+            let res = await axios.get('/api/tasks');
         console.log(res.data);
         } catch (error) {
             console.error(error)
