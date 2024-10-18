@@ -6,12 +6,12 @@ import { generate_id, validateTaskdata , insertDb, updateDb} from "./utils/index
 
 const port = 8080;
 const server = http.createServer(async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // res.setHeader('Access-Control-Allow-Origin', "*");
+  //   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   try {
     //It Extracts pathname , searchparams from req.url object 
-    const parsedURL = url.parse(req.url, true);
+    const parsedURL = url.parse(req.url, true);//if you don't pass true, it will take it as string
     // Route Handling
     /*
     API Endpoint : /api/tasks
@@ -22,6 +22,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "GET" && parsedURL.pathname === "/api/tasks") {
       // Read data.json and send JSON data as response
       let data = await fs.readFile("data.json");
+      res.setHeader('Access-Control-Allow-Origin', "*");
       res.writeHead(200, { 'Content-Type': "application/json" });
       res.end(data); // Send the data read from data.json
     }
@@ -137,11 +138,15 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': "application/json" });
       res.end(JSON.stringify({ message: "Task has been deleted from the DB." }));
   }
-    
+    /*
+    API Endpoint : /
+    HTTP Method : GET
+    Desc : Serve the views - index.html
+    */
      else if (req.method === "GET" && parsedURL.pathname === "/") {
-      res.writeHead(200, { 'Content-Type': "application/json" });
-      const message = { message: "Hello World. Welcome to My App" };
-      res.end(JSON.stringify(message));
+      let html = await fs.readFile("views/index.html");
+      res.writeHead(200, { 'Content-Type': "text/html" });
+      res.end(html);
     } else {
       // Unrecognized/Unsupported HTTP Method response
       res.writeHead(404, { 'Content-Type': "application/json" });
