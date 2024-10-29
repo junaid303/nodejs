@@ -1,32 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasky Web App v1.0</title>
     <style>
-        body{
-            background-color: bisque;
+       
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            
+        }
+
+        td,
+        th {
+            border: 5px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .container {
+         max-width: 80%;
+         
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
 </head>
+
+
 <body>
     <center>
         <div>
             <h1>WELCOME TO TASKY APP v1.0</h1>
-        </div>
+            <section class="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Taskname</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                       
+                    </tbody>
+                </table>
+            </section>
+        </div> 
     </center>
 </body>
 <script>
     async function hitAPI() {
         try {
-            let res = await axios.get('/api/tasks');
-        console.log(res.data);
+            let res = await axios.get("/api/tasks");
+            let tasks = res.data;
+            let tbody = document.getElementById("tbody");
+            for(let i=0; i<tasks.length; i++){
+                let tr = document.createElement("tr");
+                for(let j=0; j<Object.keys(tasks[i]).length; j++){
+                    let td = document.createElement("td");
+                    if(j==0){
+                        td.innerText = tasks[i]._id;
+                    }
+                    if(j==1){
+                        td.innerText = tasks[i].taskname;
+                    }
+                    if(j==2){
+                        td.innerText = tasks[i].deadline;
+                    }   
+                    if(j==3){
+                        td.innerText = tasks[i].status;
+                    }
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+                 
+            }
+               
         } catch (error) {
             console.error(error)
         }
     }
     hitAPI();
+
+
+
 </script>
+
 </html>

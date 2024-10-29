@@ -21,8 +21,8 @@ function validateTaskdata(body) {
   let { taskname, deadline, status } = body;
   let error = {};
   //Verify taskname : Negative check 
-  if (taskname.length < 5 || taskname.length > 200) {//NOTE : In neg checks use || operator
-    error.message = "Taskname must be > 5 and Less than < 200 Chars"
+  if (!taskname || taskname.length < 5 || taskname.length > 200) {
+    error.message = "Taskname must be > 5 and < 200 characters.";
   }
 
 
